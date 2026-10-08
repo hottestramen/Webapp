@@ -1,0 +1,193 @@
+/*
+ * 디자인 토큰 (PRD §6.2, §6.3)
+ * 색상·간격·모서리·그림자·글꼴·모션 값은 이 파일에서만 정의한다.
+ * 컴포넌트는 tailwind.config.ts 를 통해 이 변수를 참조한다.
+ * 다크 모드는 Out of Scope 이지만, :root 값을 [data-theme='dark'] 등에서 덮어쓸 수 있는 구조다.
+ */
+:root {
+  /* 브랜드 */
+  --color-primary: #6d5bf7;
+  --color-primary-strong: #4f46e5;
+  /* 텍스트로 쓰는 강조색(링크·선택된 탭). 다크 모드에서는 밝은 값으로 바뀐다 */
+  --color-primary-text: #4f46e5;
+  /* 차트 막대 색 */
+  --color-chart: #4f46e5;
+  --color-on-brand: #ffffff;
+  /* PRD 초안의 #8b5cf6 / #6366f1 / #e5484d 는 흰 글자 대비가 4.5:1 미만(4.23 / 4.47 / 3.91)이라
+   * 같은 색상 계열에서 최소한만 어둡게 조정했다. 기준은 tokens.contrast.test.ts 가 지킨다. */
+  --gradient-brand: linear-gradient(135deg, #6a55ee 0%, #4f46e5 100%);
+
+  /* 표면·텍스트·테두리·포커스 */
+  --color-bg: #f5f6f8;
+  --color-surface: #ffffff;
+  /* 헤더: 반투명 표면 + 블러(스크롤하면 내용이 은은하게 비친다) */
+  --color-header-bg: rgba(255, 255, 255, 0.82);
+  --color-text: #12131a;
+  --color-text-muted: #596072;
+  --color-border: #e5e7ec;
+  --color-focus: #4f46e5;
+  --color-overlay: rgba(30, 27, 46, 0.48);
+  --color-danger: #b4234a;
+
+  /* 간격 */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* 크기 (터치 대상 44px 등, PRD §5.1) */
+  --size-touch: 44px;
+  --size-header: 64px;
+  --size-modal: 440px;
+  --size-modal-lg: 640px;
+  --size-sidebar: 280px;
+  --size-kanban-col: 200px;
+  --size-cell-min: 112px;
+  --size-content-max: 1600px;
+  --border-width: 1px;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --card-lift: 2px;
+
+  /* 모서리 */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  /* 그림자 */
+  --shadow-card: 0 1px 2px rgba(18, 19, 26, 0.04), 0 4px 16px rgba(18, 19, 26, 0.05);
+  --shadow-raised: 0 16px 40px rgba(18, 19, 26, 0.14);
+
+  /* 글꼴 */
+  --font-sans:
+    'Pretendard Variable', Pretendard, system-ui, -apple-system, 'Segoe UI', 'Malgun Gothic',
+    'Apple SD Gothic Neo', sans-serif;
+
+  /* 글자 크기 */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+
+  /* 모션 */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* 배지: 상태 (PRD §6.3) */
+  --badge-todo-bg: #eef0f5;
+  --badge-todo-text: #475069;
+  --badge-progress-bg: #e8e7ff;
+  --badge-progress-text: #4338ca;
+  --badge-done-bg: #e3f6ec;
+  --badge-done-text: #17713f;
+
+  /* 배지: 우선순위 */
+  --badge-high-bg: #fde8ec;
+  --badge-high-text: #b4234a;
+  --badge-medium-bg: #fff2db;
+  --badge-medium-text: #9a5b00;
+  --badge-low-bg: #e6f1fb;
+  --badge-low-text: #1d5f99;
+
+  /* 배지: 긴급 */
+  --badge-due-soon-bg: #ffebd6;
+  --badge-due-soon-text: #a04a00;
+  --badge-overdue-bg: #d73a3e;
+  --badge-overdue-text: #ffffff;
+
+  /* 팀원 휴가 칩(캘린더). 배지 색과 겹치지 않는 청록 계열 */
+  --leave-bg: #d9f3f0;
+  --leave-text: #0b5a55;
+  --trip-bg: #fdecc8;
+  --trip-text: #6b3f00;
+
+  /* 우선순위 high 카드 왼쪽 띠 */
+  --priority-high-stripe-width: 3px;
+
+  /* 캘린더 요일·공휴일 색 (PRD F-V-03) */
+  --color-holiday: #c62a3b;
+  --color-saturday: #1d5f99;
+
+  /* 팀원 아바타 색: members.color 는 avatar-1 ~ avatar-8 키를 쓴다 */
+  --avatar-1: #6d5bf7;
+  --avatar-2: #0f766e;
+  --avatar-3: #b4234a;
+  --avatar-4: #9a5b00;
+  --avatar-5: #1d5f99;
+  --avatar-6: #17713f;
+  --avatar-7: #86198f;
+  --avatar-8: #475069;
+  --avatar-text: #ffffff;
+
+  /* 카테고리 색: categories.color 는 cat-1 ~ cat-8 키를 쓴다 */
+  --cat-1: #4f46e5;
+  --cat-2: #0e7490;
+  --cat-3: #a21caf;
+  --cat-4: #15803d;
+  --cat-5: #b45309;
+  --cat-6: #475569;
+  --cat-7: #be123c;
+  --cat-8: #1d4ed8;
+}
+
+/*
+ * 다크 모드: <html data-theme="dark"> 일 때 색 토큰만 덮어쓴다(간격·모서리·글꼴·모션은 그대로).
+ * 모든 텍스트/배경 쌍은 tests/tokens.contrast.test.ts 가 라이트·다크 둘 다 4.5:1 이상인지 검사한다.
+ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-primary-text: #a9a5ff;
+  --color-chart: #8b87ff;
+
+  --color-bg: #0c0d12;
+  --color-surface: #15171e;
+  --color-header-bg: rgba(12, 13, 18, 0.8);
+  --color-text: #ececf2;
+  --color-text-muted: #a3a8b8;
+  --color-border: #272a35;
+  --color-focus: #a9a5ff;
+  --color-overlay: rgba(0, 0, 0, 0.64);
+  --color-danger: #ff8fa8;
+  --color-holiday: #ff8f9c;
+  --color-saturday: #82b9f2;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-raised: 0 12px 32px rgba(0, 0, 0, 0.6);
+
+  --badge-todo-bg: #2b2f40;
+  --badge-todo-text: #c5cade;
+  --badge-progress-bg: #2d2b5a;
+  --badge-progress-text: #c9c6ff;
+  --badge-done-bg: #17392b;
+  --badge-done-text: #92e2b7;
+  --badge-high-bg: #4b2030;
+  --badge-high-text: #ffb0c3;
+  --badge-medium-bg: #4a3513;
+  --badge-medium-text: #ffd28c;
+  --badge-low-bg: #1c3651;
+  --badge-low-text: #9fcff7;
+  --badge-due-soon-bg: #4b2b11;
+  --badge-due-soon-text: #ffc08d;
+
+  --leave-bg: #143b38;
+  --leave-text: #8fe3da;
+  --trip-bg: #46330f;
+  --trip-text: #f5d38f;
+}
+
+/* 모션 줄이기: 모든 모션 토큰을 0ms 로 덮어쓴다 (PRD §5.3) */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+  }
+}

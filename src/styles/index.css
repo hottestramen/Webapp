@@ -1,0 +1,41 @@
+@import 'app-fonts';
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  :focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-focus);
+    outline-offset: var(--focus-ring-offset);
+  }
+}
+
+/* 모달 열림: 페이드 + 슬라이드 (PRD §6.4). prefers-reduced-motion 에서는 모션 토큰이 0ms 가 된다. */
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(var(--space-4));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+dialog[open] {
+  animation: dialog-in var(--motion-base) var(--motion-ease);
+}

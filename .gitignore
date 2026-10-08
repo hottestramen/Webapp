@@ -1,0 +1,14 @@
+node_modules
+dist
+.env
+.env.*
+!.env.example
+*.local
+.mcp.json
+.vite
+
+# Playwright 산출물
+e2e/screenshots/
+test-results/
+playwright-report/
+dist-html

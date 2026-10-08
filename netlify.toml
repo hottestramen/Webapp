@@ -1,0 +1,31 @@
+# Netlify 배포 설정. 환경변수 VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY 는 Netlify 사이트 설정에서 넣는다.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# SPA: 모든 경로를 index.html 로 (쿼리스트링 ?q=&view= 공유 링크 포함)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# 보안 헤더 (PRD §5.4).
+# connect-src 의 *.supabase.co 는 프로젝트 주소(예: https://abcd.supabase.co, wss://abcd.supabase.co)로 좁히는 것을 권장한다.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains"
+
+# 해시가 붙은 정적 파일은 오래 캐시한다
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
