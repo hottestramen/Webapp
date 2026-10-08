@@ -52,7 +52,7 @@ export async function openAs(
   }, name);
   const page = await context.newPage();
   await page.goto(path);
-  await expect(page.getByRole('heading', { name: '부서 공용 업무 캘린더' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '백령지사 공용업무 캘린더' })).toBeVisible();
   return page;
 }
 

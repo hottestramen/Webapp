@@ -32,7 +32,7 @@ export function Header({ userName, onChangeName, onNewTask, onOpenSettings, onHo
             }}
             className="rounded-sm"
           >
-            부서 공용 업무 캘린더
+            백령지사 공용업무 캘린더
           </a>
         </h1>
 

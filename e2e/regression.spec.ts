@@ -131,7 +131,7 @@ test('충돌 후 "내 입력값"은 내가 실제로 바꾼 필드만 보인다'
   await expect(detailA.getByText(/^내 입력값/)).toHaveCount(1);
 });
 
-test('제목("부서 공용 업무 캘린더")을 누르면 설정·다른 뷰·필터가 풀리고 칸반으로 돌아간다', async ({
+test('제목("백령지사 공용업무 캘린더")을 누르면 설정·다른 뷰·필터가 풀리고 칸반으로 돌아간다', async ({
   browser,
 }) => {
   const page = await openAs(browser, '김하늘', '/?view=dashboard&q=예산', {
@@ -141,7 +141,7 @@ test('제목("부서 공용 업무 캘린더")을 누르면 설정·다른 뷰·
   await page.getByRole('button', { name: '설정', exact: true }).click();
   await expect(page.getByRole('heading', { name: '설정' })).toBeVisible();
 
-  await page.getByRole('link', { name: '부서 공용 업무 캘린더' }).click();
+  await page.getByRole('link', { name: '백령지사 공용업무 캘린더' }).click();
   await expect(page.getByRole('heading', { name: '설정' })).toHaveCount(0);
   await expect(page.getByRole('tab', { name: '칸반' })).toHaveAttribute('aria-selected', 'true');
   await expect(page).toHaveURL(/view=kanban|^[^?]*$/);
